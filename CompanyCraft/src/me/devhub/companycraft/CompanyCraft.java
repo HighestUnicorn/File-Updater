@@ -17,6 +17,8 @@ public class CompanyCraft extends JavaPlugin {
 		util = new Util(this);
 		util.setupListeners();
 		data = new PlayerData(this);
+		
+		data.createConfig();
 	}
 	
 	public void onDisable() {
