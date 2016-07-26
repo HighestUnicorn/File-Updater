@@ -1,5 +1,15 @@
 package me.devhub.companycraft;
 
-public class CompanyCraft {
+import org.bukkit.plugin.java.JavaPlugin;
+
+public class CompanyCraft extends JavaPlugin {
+	
+	public void onEnable() {
+		
+	}
+	
+	public void onDisable() {
+		
+	}
 
 }
