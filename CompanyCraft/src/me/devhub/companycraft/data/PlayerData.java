@@ -15,8 +15,8 @@ public class PlayerData {
 		this.plugin = plugin;
 	}
 	
-	public File dataFile;
-	public FileConfiguration data;
+	public static File dataFile;
+	public static FileConfiguration data;
 	
 	public void createConfig() {
 		if(dataFile == null) {
@@ -30,7 +30,7 @@ public class PlayerData {
 		saveData();
 	}
 	
-	public void saveData() {
+	public static void saveData() {
 		try {
 			data.save(dataFile);
 		} catch (IOException e) {

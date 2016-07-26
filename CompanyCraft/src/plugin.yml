@@ -2,5 +2,8 @@ name: CompanyCraft
 description: Main plugin for CompanyCraft
 version: 1.0.0
 main: me.devhub.companycraft.CompanyCraft
+depend: [Vault]
 
 commands:
+    company:
+      description: Main Command

@@ -12,10 +12,8 @@ import org.bukkit.event.player.PlayerJoinEvent;
 
 public class PlayerJoin implements Listener {
 	
-	public static String defaultComp = ChatColor.DARK_AQUA + "[JAAPEG Inc.] " + ChatColor.RESET;
+	public static String defaultComp = ChatColor.GRAY + " [" + ChatColor.BLUE + "JAAPEG Inc." + ChatColor.GRAY + "]" + ChatColor.RESET;
 	public static String customComp;
-	
-	PlayerData data;
 	
 	CompanyCraft plugin;
 	public PlayerJoin(CompanyCraft plugin) {
@@ -25,12 +23,14 @@ public class PlayerJoin implements Listener {
 	@EventHandler
 	public void onPlayerJoin(PlayerJoinEvent e) {
 		Player p = e.getPlayer();
-		if(plugin.state == BusinessState.DEFAULT) {
-			p.setDisplayName(defaultComp + p.getName());
-		} else
-		if(plugin.state == BusinessState.CUSTOM) {
-			customComp = data.data.getString("Business." + p.getName());
-			p.setDisplayName(customComp + p.getName());
+		if(!PlayerData.data.contains("Business." + p.getName())) {
+			CompanyCraft.chat.setPlayerSuffix(p, defaultComp);
+			//p.sendMessage("Suffix = " + CompanyCraft.chat.getPlayerSuffix(p));
+			return;
+		} else {
+			p.setDisplayName(PlayerData.data.getString("Business." + p.getName()) + p.getName());
+			//p.sendMessage("You're suffix has been loaded!");
+			return;
 		}
 	}
 
