@@ -1,7 +1,7 @@
 package me.devhub.companycraft.data;
 
 import me.devhub.companycraft.CompanyCraft;
-import me.devhub.companycraft.CreateCompany;
+import me.devhub.companycraft.command.CreateCompany;
 import me.devhub.companycraft.event.PlayerJoin;
 
 import org.bukkit.Bukkit;

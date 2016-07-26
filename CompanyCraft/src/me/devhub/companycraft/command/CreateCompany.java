@@ -1,5 +1,6 @@
-package me.devhub.companycraft;
+package me.devhub.companycraft.command;
 
+import me.devhub.companycraft.CompanyCraft;
 import me.devhub.companycraft.data.PlayerData;
 import me.devhub.companycraft.event.PlayerJoin;
 import net.milkbowl.vault.economy.EconomyResponse;
@@ -11,6 +12,8 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 public class CreateCompany implements CommandExecutor {
+	
+	public static int value = 26000;
 
 	@SuppressWarnings("deprecation")
 	@Override
@@ -20,7 +23,8 @@ public class CreateCompany implements CommandExecutor {
 		if(cmd.getLabel().equalsIgnoreCase("Company")) {
 			if(args.length == 0) {
 				p.sendMessage(ChatColor.GRAY + "=====" + ChatColor.GOLD + "CompanyCraft" + ChatColor.GRAY + "=====");
-				p.sendMessage("/Company Create [Name] - Creates a company for $25000");
+				p.sendMessage("/Company Create [Name] - Creates a company for $25000.");
+				p.sendMessage("/Company Resign - Resign from your company and add your company value to your account.");
 			}
 			
 			if(args.length > 0) {
@@ -29,7 +33,11 @@ public class CreateCompany implements CommandExecutor {
 					p.sendMessage(ChatColor.RED + "Please Specify A Company Name!");
 					return false;
 					}
-					if(args.length >= 2) {
+					if(args.length == 2) {
+					p.sendMessage(ChatColor.RED + "Please add a company registrar. E.g. Co., Inc., Etc");
+					return false;
+					}
+					if(args.length > 2) {
 					String name1 = args[1];
 					String name2 = args[2];
 					String companyName = name1 + " " + name2;
@@ -42,8 +50,12 @@ public class CreateCompany implements CommandExecutor {
 						PlayerJoin.customComp = ChatColor.GRAY + " [" + ChatColor.BLUE + companyName + ChatColor.GRAY + "]" + ChatColor.RESET;
 						CompanyCraft.chat.setPlayerSuffix(p, PlayerJoin.customComp);
 						PlayerData.data.set("Business." + p.getName(), PlayerJoin.customComp);
+						PlayerData.data.set("Business." + p.getName() + ".CompanyValue", value);
 						PlayerData.saveData();
 						return true;
+						} else {
+						p.sendMessage(ChatColor.RED + "You do not have sufficient funds to purchase a company.");
+						return false;	
 						}
 						} else {
 						p.sendMessage(ChatColor.RED + "You already have a company!");
@@ -55,7 +67,25 @@ public class CreateCompany implements CommandExecutor {
 						return false;
 					}
 					}
-				}
+				} else
+					if(args[0].equalsIgnoreCase("Resign")) {
+						if(PlayerData.data.contains("Business." + p.getName())) {
+						EconomyResponse r = CompanyCraft.econ.depositPlayer(p.getName(), value);
+						if(r.transactionSuccess()) {
+						p.sendMessage(ChatColor.GOLD + "You have resigned from your company!");
+						p.sendMessage(ChatColor.GOLD + "You have earned $" + value);
+						PlayerData.data.set("Business." + p.getName(), null);
+						PlayerData.saveData();
+						CompanyCraft.chat.setPlayerSuffix(p, PlayerJoin.defaultComp);
+						return true;
+						} else {
+						return false;
+						}
+						} else {
+						p.sendMessage(ChatColor.RED + "You don't have a business! Try creating one first.");
+						return false;
+						}
+					}
 			}
 		}
 		

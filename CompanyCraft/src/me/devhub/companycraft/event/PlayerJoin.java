@@ -2,7 +2,6 @@ package me.devhub.companycraft.event;
 
 import me.devhub.companycraft.CompanyCraft;
 import me.devhub.companycraft.data.PlayerData;
-import me.devhub.companycraft.state.BusinessState;
 
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
@@ -28,7 +27,7 @@ public class PlayerJoin implements Listener {
 			//p.sendMessage("Suffix = " + CompanyCraft.chat.getPlayerSuffix(p));
 			return;
 		} else {
-			p.setDisplayName(PlayerData.data.getString("Business." + p.getName()) + p.getName());
+			CompanyCraft.chat.setPlayerSuffix(p, PlayerData.data.getString("Business." + p.getName()) + p.getName());
 			//p.sendMessage("You're suffix has been loaded!");
 			return;
 		}
