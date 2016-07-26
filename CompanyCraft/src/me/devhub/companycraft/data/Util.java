@@ -1,4 +1,4 @@
-package me.devhub.companycraft.state;
+package me.devhub.companycraft.data;
 
 import me.devhub.companycraft.CompanyCraft;
 import me.devhub.companycraft.event.PlayerJoin;
