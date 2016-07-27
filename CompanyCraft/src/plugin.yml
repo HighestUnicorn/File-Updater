@@ -7,3 +7,5 @@ depend: [Vault]
 commands:
     company:
       description: Main Command
+    companies:
+      description: Lists Companies

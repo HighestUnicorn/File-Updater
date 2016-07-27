@@ -1,9 +1,10 @@
 package me.devhub.companycraft.api;
 
+import me.devhub.companycraft.data.PlayerData;
+
+import org.bukkit.OfflinePlayer;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
-
-import me.devhub.companycraft.data.PlayerData;
 
 public class CompanyAPI {
 	

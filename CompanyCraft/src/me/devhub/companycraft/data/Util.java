@@ -2,6 +2,7 @@ package me.devhub.companycraft.data;
 
 import me.devhub.companycraft.CompanyCraft;
 import me.devhub.companycraft.command.CreateCompany;
+import me.devhub.companycraft.command.ListCompany;
 import me.devhub.companycraft.event.PlayerJoin;
 
 import org.bukkit.Bukkit;
@@ -20,6 +21,7 @@ public class Util {
 	
 	public void setupCommands() {
 		plugin.getCommand("Company").setExecutor(new CreateCompany());
+		plugin.getCommand("Companies").setExecutor(new ListCompany());
 	}
 
 }

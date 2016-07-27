@@ -27,7 +27,7 @@ public class PlayerJoin implements Listener {
 			//p.sendMessage("Suffix = " + CompanyCraft.chat.getPlayerSuffix(p));
 			return;
 		} else {
-			CompanyCraft.chat.setPlayerSuffix(p, PlayerData.data.getString("Business." + p.getName()) + p.getName());
+			CompanyCraft.chat.setPlayerSuffix(p, PlayerData.data.getString("Business." + p.getName()));
 			//p.sendMessage("You're suffix has been loaded!");
 			return;
 		}
