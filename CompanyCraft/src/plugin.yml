@@ -5,7 +5,7 @@ main: me.devhub.companycraft.CompanyCraft
 depend: [Vault]
 
 commands:
-    company:
+    Company:
       description: Main Command
-    companies:
+    Companies:
       description: Lists Companies

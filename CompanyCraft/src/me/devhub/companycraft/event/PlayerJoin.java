@@ -22,12 +22,12 @@ public class PlayerJoin implements Listener {
 	@EventHandler
 	public void onPlayerJoin(PlayerJoinEvent e) {
 		Player p = e.getPlayer();
-		if(!PlayerData.data.contains("Business." + p.getName())) {
+		if(!PlayerData.data.contains("Business." + p.getName() + ".CompanyName")) {
 			CompanyCraft.chat.setPlayerSuffix(p, defaultComp);
 			//p.sendMessage("Suffix = " + CompanyCraft.chat.getPlayerSuffix(p));
 			return;
 		} else {
-			CompanyCraft.chat.setPlayerSuffix(p, PlayerData.data.getString("Business." + p.getName()));
+			CompanyCraft.chat.setPlayerSuffix(p, PlayerData.data.getString("Business." + p.getName() + ".CompanyName"));
 			//p.sendMessage("You're suffix has been loaded!");
 			return;
 		}
