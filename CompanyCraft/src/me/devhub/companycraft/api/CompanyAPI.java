@@ -7,24 +7,16 @@ import org.bukkit.entity.Player;
 
 public class CompanyAPI {
 	
-	public FileConfiguration getConfig() {
+	public static String getPlayerCompany(Player pl) {
+		return PlayerData.data.getString("Business." + pl.getName() + ".CompanyName");
+	}
+
+	public static Integer getCompanyValue(Player pl) {
+		return PlayerData.data.getInt("Business." + pl.getName() + ".CompanyValue");
+	}
+
+	public static FileConfiguration getCompanyConfig() {
 		return PlayerData.data;
-	}
-	
-	public String getCompanyName(Player p) {
-		return getConfig().getString("Business." + p.getName());
-	}
-	
-	public Integer getCompanyValue(Player p) {
-		return getConfig().getInt("Business." + p.getName() + ".CompanyValue");
-	}
-	
-	public void setCompanyValue(Player p, Integer value) {
-		getConfig().set("Business." + p.getName() + ".CompanyValue", value);
-	}
-	
-	public void saveConfig() {
-		PlayerData.saveData();
 	}
 
 }

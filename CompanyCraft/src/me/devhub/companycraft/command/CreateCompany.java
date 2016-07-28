@@ -25,9 +25,9 @@ public class CreateCompany implements CommandExecutor {
 	List<String> companies;
 	CompanyAPI api;
 	
-	String companyName;
+	static String companyName;
 	String prefix = ChatColor.DARK_AQUA + "[" + ChatColor.DARK_GREEN + "CompanyCraft" + ChatColor.DARK_AQUA + "]" + ChatColor.RESET;
-
+	
 	@SuppressWarnings("deprecation")
 	public boolean onCommand(CommandSender sender, Command cmd, String s, String[] args) {
 		Player p = (Player) sender;

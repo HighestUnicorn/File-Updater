@@ -18,21 +18,42 @@ public class PlayerData {
 	public static File dataFile;
 	public static FileConfiguration data;
 	
+	public static File busFile;
+	public static FileConfiguration bus;
+	
 	public void createConfig() {
 		if(dataFile == null) {
 			dataFile = new File(plugin.getDataFolder() + "/data", "playerBusiness.yml");
 		}
 		data = YamlConfiguration.loadConfiguration(dataFile);
-		init();
+		dataInit();
+		
+		if(busFile == null) {
+			busFile = new File(plugin.getDataFolder() + "/data", "businessList.yml");
+		}
+		data = YamlConfiguration.loadConfiguration(dataFile);
+		busInit();
 	}
 	
-	public void init() {
+	public void busInit() {
+		saveData();
+	}
+	
+	public void dataInit() {
 		saveData();
 	}
 	
 	public static void saveData() {
 		try {
 			data.save(dataFile);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public static void saveBus() {
+		try {
+			bus.save(busFile);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

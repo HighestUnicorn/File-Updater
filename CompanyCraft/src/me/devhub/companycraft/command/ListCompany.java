@@ -20,6 +20,7 @@ public class ListCompany implements CommandExecutor {
 			for(int i = 0; i < CreateCompany.list.size(); i++) {
 				p.sendMessage(i + 1 + ". " + ChatColor.BLUE + "'" + ChatColor.WHITE + CreateCompany.list.get(i).toString() + ChatColor.BLUE + "'" + ChatColor.WHITE + ": $" + CreateCompany.value);
 			}
+			p.sendMessage(ChatColor.GOLD + "==================");
 				return true;
 			}
 		
